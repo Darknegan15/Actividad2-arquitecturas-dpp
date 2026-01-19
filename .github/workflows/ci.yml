@@ -21,8 +21,10 @@ jobs:
           java-version: "17"
           cache: maven
 
-      - name: Dar permisos a Maven Wrapper
-        run: chmod +x mvnw
+      - name: Arreglar formato Windows y dar permisos
+        run: | 
+         sed -i 's/\r$//' mvnw
+         chmod +x mvnw
 
       - name: Compilar y ejecutar tests con Maven Wrapper
         run: ./mvnw -B clean test
